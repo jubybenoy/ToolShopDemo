@@ -3,7 +3,7 @@ const Login = require("./LoginPage");
 class Cart{
     constructor(page){
         this.page=page;
-        this.home=page.getByRole('link', { name: 'cart' }).click();
+       // this.home=page.getByRole('link', { name: 'cart' }).click();
         this.checkoutbtn=page.getByRole('button',{'name':'Proceed to checkout'});
         this.proceedtocheckoutbtn=page.getByRole('button',{'name':' Proceed to checkout '});
         this.youremail=page.locator("#email");

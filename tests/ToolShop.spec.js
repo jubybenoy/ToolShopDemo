@@ -1,4 +1,5 @@
-const {test,expect} = require("@playwright/test");
+//const {test,expect} = require("@playwright/test");
+const { test, expect } = require('../Fixtures/authFixture');
 const signinWall = require("../page-object/SigninWall");
 const Login = require("../page-object/LoginPage");
 const Registration = require("../page-object/CustomerRegistration");
@@ -6,24 +7,24 @@ const Purchase = require("../page-object/DashBoard");
 const Cart = require("../page-object/Cart");
 const BillingAddress = require("../page-object/Billing");
 const Payment = require("../page-object/payment");
-const loginTestdata = require("../utils/signindata.json");
+const performLogin= require('../utils/authUtils');
+const loginTestdata = require("../test-data/signindata.json");
 const registerTestdata = require("../test-data/registrationdata.json");
 const paymentTestData = require("../test-data/paymentTestData.json");
 const shoppingList=require("../test-data/ProductNamesData.json")
 const sortingData = require("../test-data/sortingData.json");
 
-test("Toolshop Testing", async({page})=>{
-
-    const signinwall=new signinWall(page);   
+test("Toolshop Testing", async ({ loginPage }) => {
+    const page = loginPage;
+   // const signinwall=new signinWall(page);   
     const registration=new Registration(page);
-    const login=new Login(page);
-    const logindata=loginTestdata.signinDetails; 
     const registrationdata=registerTestdata.registerDetails;
- 
-    await signinwall.goto(page);  
+    await page.goto('/auth/register');
+    //await signinwall.goto(page);  
     await registration.customerRegister(registrationdata);
     await expect(page).toHaveURL(/.*login*./);    
-    await login.signIn(logindata);  
+    //await login.signIn(logindata);  
+    
  
     const purchase=new Purchase(page);
     const cart=new Cart(page);
