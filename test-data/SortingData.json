@@ -1,0 +1,6 @@
+{
+  "priceHighToLow": "price,desc",
+  "priceLowToHigh": "price,asc",
+  "nameAsc": "name,asc",
+  "nameDsc":"name,desc"
+}

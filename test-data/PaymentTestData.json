@@ -1,0 +1,21 @@
+{
+        "BankTransferData": {
+        "method": "Bank Transfer",
+        "bankName":"HDFC",
+        "accountName":"Juby",
+        "accountNo":"88003667889987"
+    },
+
+    
+        "CCTransferData":{
+        "method":"Credit Card",
+        "creditCardNo":"5678-6789-7890-7889",
+        "expiryDate":"11/2028",
+        "CVVno":"786",
+        "cardHolderName":"juby"
+    },
+
+    "COD":{
+        "method":"Cash on Delivery"
+    }
+}

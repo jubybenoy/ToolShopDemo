@@ -1,0 +1,15 @@
+{
+    "registerDetails": {
+       "firstName":"Miguel",
+       "lastName":"Benoy",
+       "DOBirth":"2000-07-22",
+       "countryName":"India",
+       "postalCode":"679877",
+       "houseNumber":"890",
+       "streetName":"Perumbavoor",
+       "cityName":"Ernakulam",
+       "stateName":"Kerala",
+       "phoneNumber":"7797477765",
+       "passWord":"Miguel1@123"
+    }
+}
