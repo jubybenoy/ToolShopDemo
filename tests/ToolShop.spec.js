@@ -5,7 +5,7 @@ const Purchase = require("../page-object/DashBoard");
 const Cart = require("../page-object/Cart");
 const BillingAddress = require("../page-object/Billing");
 const Payment = require("../page-object/payment");
-const loginTestdata = require("../test-data/signindata.json");
+const loginTestdata = require("../test-data/signinData.json");
 const registerTestdata = require("../test-data/registrationdata.json");
 const paymentTestData = require("../test-data/paymentTestData.json");
 const shoppingList = require("../test-data/ProductNamesData.json");
@@ -52,7 +52,7 @@ test("Toolshop Testing", async ({ page }) => {
     await billingaddress.fillBillingDetails();
     await payment.paymentProcess(cctransfer);
     await payment.confirmOrder();
-    
+
     // 3. Multiple item purchased using excel file with cash on delivery after changing quantity at cart
     await page.getByRole('link',{ name: 'Home'}).click();  
     await purchase.selectMultipleProducts(shoppingList);
