@@ -3,16 +3,10 @@ require('dotenv').config();
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  use: {
-    baseURL: process.env.BASE_URL,
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-  },
-  testDir: './tests',             // usually 'tests', not 'test'
+  testDir: './tests',            
   retries: 0,
   fullyParallel: true,
-  workers: 3,
-  fullyParallel: true,
+  workers: 1,
   timeout: 150 * 1000,
 
   expect: {
@@ -21,10 +15,10 @@ export default defineConfig({
 
   reporter: [
     ['html'],
-    ['line'],
-    ['line'],
+    ['line'], // <--- Keep only ONE line reporter
     ['allure-playwright', { outputFolder: 'allure-results' }]
   ],
+
   use: {
     baseURL: process.env.BASE_URL,
     trace: 'on-first-retry',
@@ -32,18 +26,16 @@ export default defineConfig({
   },
 
   projects: [
-    
     {
       name: 'chrome',
       use: {
-        browserName: 'chromium',  // correct property name
+        browserName: 'chromium',  
         headless: false,
-        ignoreHTTPSErrors: true,  // correct casing
+        ignoreHTTPSErrors: true,  
         permissions: ['geolocation'],
         screenshot: 'retain-on-failure',
         trace: 'on',
-        //trace:'retain-on-failure',
-        video: 'retain-on-failure',
+        video: 'on',
         launchOptions: {
           slowMo: 1000,
         },

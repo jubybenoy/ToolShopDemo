@@ -1,5 +1,5 @@
 const Login = require("./LoginPage");
-
+const performLogin = require('../utils/authUtils');
 class Cart{
     constructor(page){
         this.page=page;
@@ -22,10 +22,10 @@ class Cart{
     }
     else{
     console.log("Logged out for some reason. Entering login details ");    
-        await this.youremail.fill(loginData.eMail);
-        await this.yourpassword.fill(loginData.passWord);
-        await this.loginbtn.click();
-        await this.proceedtocheckoutbtn.click();    
+        await performLogin(this.page,loginData.eMail,loginData.passWord);
+        await cartLink.click();
+        await this.checkoutbtn.click();
+        await this.proceedtocheckoutbtn.click();   
 
     }
     }     

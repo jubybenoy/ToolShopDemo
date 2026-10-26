@@ -15,29 +15,27 @@ class Payment{
         this.cardholdername=page.locator("#card_holder_name");
         this.buynowpaylater=page.getByRole('option',{'name':'buy-now-pay-later'});
         this.giftcard=page.getByRole('option',{'name':'Gift Card'});
-        this.checkpayment=page.getByRole('button',{'name' : 'Check payment '});
+        this.checkpaymentBtn=page.getByRole('button',{'name' : 'Check payment '});
         this.confirmbtn = page.locator('[data-test="finish"]');
-        this.orderconfirmationmsg = page.getByText('Payment was successful');
-        
-        //this.orderconfirmationmsg = page.getByRole('heading', { name: 'Payment was successful' }).isVisible();
-    }
+        this.orderConfirmationmsg=page.locator("#order-confirmation");
+     }
 
     async paymentProcess(paymentDetails){
         console.log(`Processing payment via: ${paymentDetails.method}`);
 
     if (paymentDetails.method === "Bank Transfer") {
-            await this.paymentmethod.selectOption("Bank Transfer");
-            await this.bankname.fill(paymentDetails.bankName);
-            await this.accountname.fill(paymentDetails.accountName);
-            await this.accountno.fill(paymentDetails.accountNo);
+        await this.paymentmethod.selectOption("Bank Transfer");
+        await this.bankname.fill(paymentDetails.bankName);
+        await this.accountname.fill(paymentDetails.accountName);
+        await this.accountno.fill(paymentDetails.accountNo);
         }      
 
     else if(paymentDetails.method==="Credit Card"){
-            await this.paymentmethod.selectOption("Credit Card");
-            await this.creditcardno.fill(paymentDetails.creditCardNo);
-            await this.expirydate.fill(paymentDetails.expiryDate);
-            await this.cvv.fill(paymentDetails.CVVno);
-            await this.cardholdername.fill(paymentDetails.cardHolderName);
+        await this.paymentmethod.selectOption("Credit Card");
+        await this.creditcardno.fill(paymentDetails.creditCardNo);
+        await this.expirydate.fill(paymentDetails.expiryDate);
+        await this.cvv.fill(paymentDetails.CVVno);
+        await this.cardholdername.fill(paymentDetails.cardHolderName);
         }
 
     else if(paymentDetails.method==="Cash on Delivery"){
@@ -45,20 +43,12 @@ class Payment{
        }
     }
    async confirmOrder() {
-
-    await this.checkpayment.click();
-    await this.page.waitForTimeout(600);    
-    await expect(this.confirmbtn).toBeEnabled();
-    await this.confirmbtn.click();
+        await expect(this.checkpaymentBtn).toBeVisible({ timeout: 10000 });
+        await this.checkpaymentBtn.click();
+        await this.confirmbtn.click();
+        console.log("Order confirmation banner displayed!");
+        }
+    }
         
-    await this.confirmbtn.evaluate((node) => node.click());
-    console.log("Confirm button clicked successfully using JavaScript evaluation");
-        
-    await expect(this.orderconfirmationmsg).toBeVisible({ timeout: 10000 });
-    console.log("Order confirmation banner verified successfully!");
-    
-   }
-
-}
 
 module.exports=Payment;
