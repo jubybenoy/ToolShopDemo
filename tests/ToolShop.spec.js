@@ -52,7 +52,7 @@ test("Toolshop Testing", async ({ page }) => {
     await billingaddress.fillBillingDetails();
     await payment.paymentProcess(cctransfer);
     await payment.confirmOrder();
-
+    
     // 3. Multiple item purchased using excel file with cash on delivery after changing quantity at cart
     await page.getByRole('link',{ name: 'Home'}).click();  
     await purchase.selectMultipleProducts(shoppingList);
