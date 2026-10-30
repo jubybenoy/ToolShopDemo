@@ -21,7 +21,7 @@ test("Toolshop Testing", async ({ page }) => {
 
     const login=new Login(page);
     await login.signIn(loginTestdata.signinDetails);
-    console.log("Login completed successfully");
+    console.log("Login successfull");
      
     const purchase=new Purchase(page);
     const cart= new Cart(page);
