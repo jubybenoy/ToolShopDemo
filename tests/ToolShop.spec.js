@@ -4,12 +4,12 @@ const Registration = require("../page-object/CustomerRegistration");
 const Purchase = require("../page-object/DashBoard");
 const Cart = require("../page-object/Cart");
 const BillingAddress = require("../page-object/Billing");
-const Payment = require("../page-object/payment");
+const Payment = require("../page-object/Payment.js");
 const loginTestdata = require("../test-data/SigninData.json");
-const registerTestdata = require("../test-data/registrationata.json");
-const paymentTestData = require("../test-data/paymentTestData.json");
+const registerTestdata = require("../test-data/RegistrationData.json");
+const paymentTestData = require("../test-data/PaymentTestData.json");
 const shoppingList = require("../test-data/ProductNamesData.json");
-const sortingData = require("../test-data/sortingData.json");
+const sortingData = require("../test-data/SortingData.json");
 
 test("Toolshop Testing", async ({ page }) => {
     const registration = new Registration(page);
