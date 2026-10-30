@@ -23,6 +23,7 @@ export default defineConfig({
     baseURL: process.env.BASE_URL,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
+    
   },
 
   projects: [
@@ -30,7 +31,7 @@ export default defineConfig({
       name: 'chrome',
       use: {
         browserName: 'chromium',  
-        headless: false,
+        headless: true,
         ignoreHTTPSErrors: true,  
         permissions: ['geolocation'],
         screenshot: 'retain-on-failure',
